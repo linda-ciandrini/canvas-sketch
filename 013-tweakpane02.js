@@ -59,7 +59,8 @@ const margine = (width - gridw) * 0.5;
     // Disegna il rettangolo centrato sulla posizione (x, y)
     context.beginPath();
     context.rect(- w/2, - h/2, w, h);
-    context.fillStyle = 'rgba(0, ' + noisepos * 255 + ', 200,' + (noisepos + 0.2) +' )';
+    context.fillStyle = 'rgba(' + PARAMS.rosso + ',' + noisepos * 255 + ', ' + PARAMS.blu + ',' + (noisepos + 0.2) +' )';
+    //context.fillStyle = PARAMS.colorerettangoli
     //context.lineWidth = 1;
     context.fill();
         // Ripristina lo stato del contesto
@@ -76,6 +77,9 @@ const PARAMS = {
   numerocolonne: 5,
   numerorighe: 5,
   sfondo: 'rgb(255, 255, 255)',
+  colorerettangoli:'rgb(55, 67, 158)',
+  blu: 0,
+  rosso: 0,
 };
 
 const pane = new Pane();
@@ -92,6 +96,15 @@ pannello.addInput(PARAMS, 'numerorighe', {
   max: 100,
 });
 pannello.addInput(PARAMS, 'sfondo');
+pannello.addInput(PARAMS, 'blu', {
+  min: 0,
+  max: 255,
+});
+pannello.addInput(PARAMS, 'rosso', {
+  min: 0,
+  max: 255,
+});
+
 
 canvasSketch(sketch, settings);
 
